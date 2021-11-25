@@ -22,5 +22,21 @@ namespace ExhallCCWebAPI.DataAccess.Players
                 .OrderByDescending(x=>x.Name)
                 .ToListAsync();
         }
+
+        public async Task<List<PlayerAppearances>> GetAppearances()
+        {
+            return await _context
+                .PlayerAppearances
+                .OrderByDescending(x=>x.Matches)
+                .ToListAsync();
+        }
+        
+        public async Task<PlayerProfile> GetProfile(int playerId)
+        {
+            return await _context
+                .PlayerProfile
+                .Where(x => x.Id == playerId)
+                .FirstAsync();
+        }
     }
 }

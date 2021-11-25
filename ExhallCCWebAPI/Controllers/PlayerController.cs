@@ -36,5 +36,35 @@ namespace ExhallCCWebAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+        
+        [HttpGet("~/Appearances")]
+        public async Task<IActionResult> GetAppearances()
+        {
+            try
+            {
+                var players = await _playerDataAccessProvider.GetAppearances();
+                return Ok(players);
+            }
+            catch (Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        
+        [HttpGet("~/Profile/{playerId}")]
+        public async Task<IActionResult> GetProfile(int playerId)
+        {
+            try
+            {
+                var players = await _playerDataAccessProvider.GetProfile(playerId);
+                return Ok(players);
+            }
+            catch (Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
     }
 }

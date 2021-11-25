@@ -7,5 +7,7 @@ namespace ExhallCCWebAPI.DataAccess.Players
     public interface IPlayerDataAccessProvider
     {
         Task<List<Player>> GetPlayers();
+        Task<List<PlayerAppearances>> GetAppearances();
+        Task<PlayerProfile> GetProfile(int playerId);
     }
 }

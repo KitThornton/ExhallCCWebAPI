@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using ExhallCCWebAPI.DataAccess;
 using ExhallCCWebAPI.DataAccess.Batting;
@@ -38,12 +39,12 @@ namespace ExhallCCWebAPI
             services.AddScoped<IBowlingDataAccessProvider, BowlingDataAccessProvider>();
 
             services.AddSwaggerGen(
-                options =>
-                {
-                    // Allow XML comments defined above each method to be displayed on swagger UI
-                    // var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                    // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
-                }
+                // options =>
+                // {
+                //     // Allow XML comments defined above each method to be displayed on swagger UI
+                //     // var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //     // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
+                // },
             );
         }
 

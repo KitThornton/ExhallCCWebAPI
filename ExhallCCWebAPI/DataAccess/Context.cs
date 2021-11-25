@@ -12,5 +12,7 @@ namespace ExhallCCWebAPI.DataAccess
         public DbSet<Player> Players { get; set; }
         public DbSet<Models.Batting> Batting { get; set; }
         public DbSet<Models.Bowling> Bowling { get; set; }
+        public DbSet<PlayerAppearances> PlayerAppearances { get; set; }
+        public DbSet<PlayerProfile> PlayerProfile { get; set; }
     }
 }
