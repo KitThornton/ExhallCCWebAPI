@@ -7,5 +7,6 @@ namespace ExhallCCWebAPI.DataAccess.Batting
     public interface IBattingDataAccessProvider
     {
         Task<List<Models.Batting>> GetBatting();
+        Task<List<Models.Batting>> GetBattingByHighScore();
     }
 }

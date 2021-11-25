@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using ExhallCCWebAPI.DataAccess;
 using ExhallCCWebAPI.DataAccess.Batting;
+using ExhallCCWebAPI.DataAccess.Bowling;
 using ExhallCCWebAPI.DataAccess.Players;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,10 +31,11 @@ namespace ExhallCCWebAPI
             // SslMode=Require;TrustServerCertificate=true;
             var conString = new NpgsqlConnection(Configuration.GetConnectionString("LocalhostConnection"));
             
-            services.AddDbContext<PlayerContext>(options => options.UseNpgsql(conString));
+            services.AddDbContext<Context>(options => options.UseNpgsql(conString));
             
             services.AddScoped<IPlayerDataAccessProvider, PlayerDataAccessProvider>();
             services.AddScoped<IBattingDataAccessProvider, BattingDataAccessProvider>();
+            services.AddScoped<IBowlingDataAccessProvider, BowlingDataAccessProvider>();
 
             services.AddSwaggerGen(
                 options =>

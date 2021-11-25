@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using ExhallCCWebAPI.DataAccess.Batting;
+using ExhallCCWebAPI.DataAccess.Bowling;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,15 +9,15 @@ namespace ExhallCCWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BattingController : ControllerBase
+    public class BowlingController : Controller
     {
-        private readonly IBattingDataAccessProvider _battingDataAccessProvider;
-        private readonly ILogger<BattingController> _logger;
+        private readonly IBowlingDataAccessProvider _bowlingDataAccessProvider;
+        private readonly ILogger<BowlingController> _logger;
 
-        public BattingController(ILogger<BattingController> logger, IBattingDataAccessProvider dataAccessProvider)
+        public BowlingController(ILogger<BowlingController> logger, IBowlingDataAccessProvider dataAccessProvider)
         {
             _logger = logger;
-            _battingDataAccessProvider = dataAccessProvider;
+            _bowlingDataAccessProvider = dataAccessProvider;
         }
         
         // GET
@@ -26,8 +26,8 @@ namespace ExhallCCWebAPI.Controllers
         {
             try
             {
-                var batting = await _battingDataAccessProvider.GetBatting();
-                return Ok(batting);
+                var bowling = await _bowlingDataAccessProvider.GetBowling();
+                return Ok(bowling);
             }
             catch (Exception e)
             {

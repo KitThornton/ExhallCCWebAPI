@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ExhallCCWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +8,19 @@ namespace ExhallCCWebAPI.DataAccess.Players
 {
     public class PlayerDataAccessProvider : IPlayerDataAccessProvider
     {
-        private readonly PlayerContext _playerContext;
+        private readonly Context _context;
 
-        public PlayerDataAccessProvider(PlayerContext playerContext)
+        public PlayerDataAccessProvider(Context context)
         {
-            _playerContext = playerContext;
+            _context = context;
         }
         
         public async Task<List<Player>> GetPlayers()
         {
-            return await _playerContext.Players.ToListAsync();
+            return await _context
+                .Players
+                .OrderByDescending(x=>x.Name)
+                .ToListAsync();
         }
     }
 }

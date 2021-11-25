@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ExhallCCWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +8,24 @@ namespace ExhallCCWebAPI.DataAccess.Batting
 {
     public class BattingDataAccessProvider : IBattingDataAccessProvider
     {
-        private readonly PlayerContext _playerContext;
+        private readonly Context _context;
 
-        public BattingDataAccessProvider(PlayerContext playerContext)
+        public BattingDataAccessProvider(Context context)
         {
-            _playerContext = playerContext;
+            _context = context;
         }
-
+        
         public async Task<List<Models.Batting>> GetBatting()
         {
-            return await _playerContext.Batting.ToListAsync();
+            return await _context.Batting.ToListAsync();
+        }
+        
+        public async Task<List<Models.Batting>> GetBattingByHighScore()
+        {
+            return await _context
+                .Batting
+                .OrderByDescending(x=>x.Runs)
+                .ToListAsync();
         }
     }
 }
