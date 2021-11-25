@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExhallCCWebAPI", "ExhallCCWebAPI\ExhallCCWebAPI.csproj", "{EAFD0BCE-0219-4AF6-A1C1-69C5B83145AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAFD0BCE-0219-4AF6-A1C1-69C5B83145AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFD0BCE-0219-4AF6-A1C1-69C5B83145AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFD0BCE-0219-4AF6-A1C1-69C5B83145AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFD0BCE-0219-4AF6-A1C1-69C5B83145AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
