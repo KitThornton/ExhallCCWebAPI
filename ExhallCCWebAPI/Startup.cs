@@ -27,6 +27,8 @@ namespace ExhallCCWebAPI
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            
             services.AddControllers();
 
             // SslMode=Require;TrustServerCertificate=true;
@@ -37,6 +39,20 @@ namespace ExhallCCWebAPI
             services.AddScoped<IPlayerDataAccessProvider, PlayerDataAccessProvider>();
             services.AddScoped<IBattingDataAccessProvider, BattingDataAccessProvider>();
             services.AddScoped<IBowlingDataAccessProvider, BowlingDataAccessProvider>();
+
+            var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            // services.AddCors(options =>
+            // {
+            //     options.AddPolicy(name: MyAllowSpecificOrigins,
+            //         builder =>
+            //         {
+            //             builder
+            //                 .AllowAnyHeader()
+            //                 .AllowAnyMethod()
+            //                 .AllowAnyOrigin();
+            //         });
+            // });
 
             services.AddSwaggerGen(
                 // options =>
@@ -51,11 +67,18 @@ namespace ExhallCCWebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(
+                options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseSwagger();
 
             app.UseSwaggerUI(options =>

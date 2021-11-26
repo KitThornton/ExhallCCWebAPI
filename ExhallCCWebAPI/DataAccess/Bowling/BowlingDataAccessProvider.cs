@@ -16,7 +16,12 @@ namespace ExhallCCWebAPI.DataAccess.Bowling
         
         public async Task<List<Models.Bowling>> GetBowling()
         {
-            return await _context.Bowling.ToListAsync();
+            return await _context
+                .Bowling
+                .OrderBy(x=>x.Average)
+                .Where(x=>x.Wickets >= 10)
+                .Take(10)
+                .ToListAsync();
         }
 
         public async Task<List<Models.Bowling>> GetBowlingByWickets()
@@ -24,6 +29,7 @@ namespace ExhallCCWebAPI.DataAccess.Bowling
             return await _context
                 .Bowling
                 .OrderByDescending(x=>x.Wickets)
+                
                 .ToListAsync();
         }
     }

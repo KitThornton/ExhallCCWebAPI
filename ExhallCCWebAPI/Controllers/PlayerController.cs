@@ -9,6 +9,7 @@ namespace ExhallCCWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class PlayerController : ControllerBase
     {
         private readonly IPlayerDataAccessProvider _playerDataAccessProvider;
@@ -21,7 +22,7 @@ namespace ExhallCCWebAPI.Controllers
         }
         
         // GET
-        [HttpGet]
+        [HttpGet("details")]
         public async Task<IActionResult> Get()
         {
             // Get all players in the DB
@@ -37,7 +38,7 @@ namespace ExhallCCWebAPI.Controllers
             }
         }
         
-        [HttpGet("~/Appearances")]
+        [HttpGet("appearances")]
         public async Task<IActionResult> GetAppearances()
         {
             try
@@ -52,7 +53,7 @@ namespace ExhallCCWebAPI.Controllers
             }
         }
         
-        [HttpGet("~/Profile/{playerId}")]
+        [HttpGet("profile/{playerId}")]
         public async Task<IActionResult> GetProfile(int playerId)
         {
             try

@@ -17,7 +17,11 @@ namespace ExhallCCWebAPI.DataAccess.Batting
         
         public async Task<List<Models.Batting>> GetBatting()
         {
-            return await _context.Batting.ToListAsync();
+            return await _context
+                .Batting
+                .OrderByDescending(x=>x.Hundreds)
+                .Take(10)
+                .ToListAsync();
         }
         
         public async Task<List<Models.Batting>> GetBattingByHighScore()
@@ -25,6 +29,7 @@ namespace ExhallCCWebAPI.DataAccess.Batting
             return await _context
                 .Batting
                 .OrderByDescending(x=>x.Runs)
+                .Take(10)
                 .ToListAsync();
         }
     }

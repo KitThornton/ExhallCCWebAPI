@@ -20,7 +20,6 @@ namespace ExhallCCWebAPI.Controllers
             _bowlingDataAccessProvider = dataAccessProvider;
         }
         
-        // GET
         [HttpGet]
         public async Task<IActionResult> Get()
         {
